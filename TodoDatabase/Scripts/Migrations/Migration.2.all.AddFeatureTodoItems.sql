@@ -7,7 +7,7 @@ DECLARE @Description                    nvarchar(2048)
 DECLARE @AddSupportedFeatureTemplate    NVARCHAR(4000)
 
 -- Assign migration script variables
-SET @Key = 'TodoItems'
+SET @Key = 'todo.db-TodoItems'
 SET @Description = 'Can return set of TodoItems'
 
 --Generate migration script
