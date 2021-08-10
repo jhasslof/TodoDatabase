@@ -21,33 +21,14 @@ AS
 
             BEGIN TRAN;
             
-            ---
-            --- Get database verison from ReleraseNo in format YYYY.MM.DD.Rev
-            ---
-            DECLARE  @Year INT;
-            DECLARE  @Month INT;
-            DECLARE  @Day INT;
-            DECLARE  @Rev INT;
-            DECLARE @VERSION_ARRAY table ([Value] nvarchar(50), ARRAYINDEX int identity(1,1))
-
-            insert into @VERSION_ARRAY ([Value])
-            (
-	            SELECT value  
-	            FROM STRING_SPLIT(@ReleaseNo, '.')  
-	            WHERE RTRIM(value) <> ''
-            );
-
-            Select @Year    = Parse( (Select [Value] from @VERSION_ARRAY where ARRAYINDEX = 1) AS INT)
-            Select @Month   = Parse( (Select [Value] from @VERSION_ARRAY where ARRAYINDEX = 2) AS INT)
-            Select @Day     = Parse( (Select [Value] from @VERSION_ARRAY where ARRAYINDEX = 3) AS INT)
-            Select @Rev     = Parse( (Select [Value] from @VERSION_ARRAY where ARRAYINDEX = 4) AS INT)
-
-            DECLARE @databasVersionId INT;
-            Select @databasVersionId = (SELECT [Id] FROM [Internal].[DatabaseVersion] WHERE 
-                                                    [Year] = @Year AND
-                                                    [Month] = @Month AND
-                                                    [Day] = @Day AND
-                                                    [Revision] = @Rev );
+            DECLARE @databasVersionId BIGINT;
+            Select @databasVersionId = (SELECT dbVersion.Id FROM [dbo].[GetDatabaseVersionFromReleaseNo] (@ReleaseNo) as release
+                                        inner join [Internal].[DatabaseVersion] as dbVersion
+	                                        on 
+		                                        dbVersion.Major = release.Major AND
+		                                        dbVersion.Minor = release.Minor AND
+		                                        dbVersion.Patch = release.Patch AND
+		                                        dbVersion.PreRelease = release.PreRelease)
 
             IF NOT EXISTS (SELECT [Id] FROM [Internal].[DatabaseVersionMigration] WHERE [DatabaseVersionId] = @databasVersionId AND [Order] = @Order)
             BEGIN

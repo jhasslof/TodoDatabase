@@ -64,6 +64,7 @@
     <Folder Include="Scripts" />
     <Folder Include="Scripts\Migrations" />
     <Folder Include="Scripts\Migrations\Templates" />
+    <Folder Include="Internal\Functions" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Todo\Tables\TodoItem.sql" />
@@ -74,6 +75,9 @@
     <Build Include="Internal\Stored Procedures\AddDatabaseVersion.sql" />
     <Build Include="Internal\Stored Procedures\AddDatabaseVersionMigration.sql" />
     <Build Include="Internal\Stored Procedures\ApplyDatabaseVersionMigrations.sql" />
+    <Build Include="Internal\Tables\SupportedFeatures.sql" />
+    <Build Include="Internal\Stored Procedures\AddSupportedFeature.sql" />
+    <Build Include="Internal\Functions\GetDatabaseVersionFromReleaseNo.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="TodoDatabase.refactorlog" />

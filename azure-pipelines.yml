@@ -1,0 +1,24 @@
+name: $(Year:yyyy).$(Month).$(DayOfMonth)$(Rev:.r)
+trigger:
+- main
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  buildConfiguration: 'Release'
+  artifactName: 'TodoDatabase'
+
+steps:
+- task: MSBuild@1
+  displayName: 'Build database project $(ArtifactName)'
+  inputs:
+    configuration: $(buildConfiguration)
+    solution: $(ArtifactName)\$(ArtifactName).sqlproj
+    msbuildArguments: /p:OutputPath="$(Build.ArtifactStagingDirectory)/"
+
+- task: PublishPipelineArtifact@1
+  displayName: Publish Pipeline Artifact $(ArtifactName).dacpac
+  inputs:
+    artifactName: $(ArtifactName)
+    targetPath: $(Build.ArtifactStagingDirectory)/$(ArtifactName).dacpac
