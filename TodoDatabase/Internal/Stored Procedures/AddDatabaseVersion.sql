@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [Internal].[AddDatabaseVersion]
     (
-      @ReleaseNo VARCHAR(255)
+      @ReleaseNo NVARCHAR(255)
     )
 AS
     BEGIN

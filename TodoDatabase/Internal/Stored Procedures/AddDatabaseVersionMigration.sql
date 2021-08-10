@@ -1,11 +1,11 @@
 ﻿CREATE PROCEDURE [Internal].[AddDatabaseVersionMigration]
     (
-      @ReleaseNo VARCHAR(255),
-      @ReleaseEnvironment  NVARCHAR (255),
-      @Order        INT,
-      @Environment  NVARCHAR (255),
-      @Name         NVARCHAR (255),
-      @Command      NVARCHAR (max)
+      @ReleaseNo            NVARCHAR(255),
+      @ReleaseEnvironment   NVARCHAR (255),
+      @Order                INT,
+      @Environment          NVARCHAR (255),
+      @Name                 NVARCHAR (255),
+      @Command              NVARCHAR (max)
     )
 AS
     BEGIN

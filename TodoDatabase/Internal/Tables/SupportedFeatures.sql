@@ -1,6 +1,6 @@
-﻿CREATE TABLE [Internal].[SupportedFeatures]
+﻿CREATE TABLE [Internal].[SupportedFeature]
 (
-    [Id]                BIGINT              NOT NULL PRIMARY KEY, 
+    [Id]                BIGINT			    NOT NULL PRIMARY KEY IDENTITY(1,1), 
     [DatabaseVersionId] BIGINT              NOT NULL,
     [Key]               NVARCHAR(255)       NOT NULL,
     [Description]       NVARCHAR(2048)      NULL,

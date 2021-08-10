@@ -90,6 +90,8 @@
     <None Include="Scripts\Migrations\Migration.1.local.AddTestData.sql" />
     <None Include="Scripts\Test-db.ps1" />
     <None Include="Scripts\Migrations\Templates\Template.AddDatabaseUser.sql" />
+    <None Include="Scripts\Migrations\Migration.2.all.AddFeatureTodoItems.sql" />
+    <None Include="Scripts\Migrations\Templates\Template.AddSupportedFeature.sql" />
   </ItemGroup>
   <ItemGroup>
     <SqlCmdVariable Include="DbUserName">
