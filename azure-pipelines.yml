@@ -1,15 +1,30 @@
-name: $(Year:yyyy).$(Month).$(DayOfMonth)$(Rev:.r)
+name: 1.0$(Rev:.r)
 trigger:
 - main
 
 pool:
-  vmImage: 'windows-latest'
+  name: Default
+  demands: 
+    - agent.name -equals OCRA 
 
 variables:
   buildConfiguration: 'Release'
   artifactName: 'TodoDatabase'
 
 steps:
+- task: CopyFiles@2
+  displayName: 'Copy cicd scripts to: $(Build.ArtifactStagingDirectory)\scripts'
+  inputs:
+    SourceFolder: .\cicd
+    Contents: '*.ps1'
+    TargetFolder: $(Build.ArtifactStagingDirectory)\scripts
+
+- task: PublishPipelineArtifact@1
+  displayName: Publish Pipeline Artifact scripts
+  inputs:
+    artifactName: scripts
+    targetPath: $(Build.ArtifactStagingDirectory)/scripts
+
 - task: MSBuild@1
   displayName: 'Build database project $(ArtifactName)'
   inputs:
