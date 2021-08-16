@@ -1,10 +1,10 @@
-﻿SET @MigrationOrder         = 2;
+﻿SET @MigrationOrder         = 3;
 SET @MigrationEnvironment   = 'all';
-SET @MigrationName          = 'AddFeatureTodoItems';
+SET @MigrationName          = 'AddFeature-ta-7-notes-db';
 
 -- Assign migration script variables
-SET @FeatureFlagKey = 'todo.db-TodoItems'
-SET @FeatureFlagDescription = 'Can return set of TodoItems'
+SET @FeatureFlagKey = 'ta-7-notes-db'
+SET @FeatureFlagDescription = 'Add Notes column on TodoItem'
 
 --Generate migration script
 :r .\Templates\Template.AddSupportedFeature.sql
