@@ -1,9 +1,9 @@
 ﻿SET @MigrationOrder         = 3;
 SET @MigrationEnvironment   = 'all';
-SET @MigrationName          = 'AddFeature-ta-7-notes-db';
+SET @MigrationName          = 'AddFeature-ta-10-notes-db';
 
 -- Assign migration script variables
-SET @FeatureFlagKey = 'ta-7-notes-db'
+SET @FeatureFlagKey = 'ta-10-notes-db'
 SET @FeatureFlagDescription = 'Add Notes column on TodoItem'
 
 --Generate migration script
