@@ -4,5 +4,5 @@
     [Name]          NVARCHAR(255)   NOT NULL, 
     [IsComplete]    BIT             NOT NULL DEFAULT 0, 
     [Created]       DATETIME        NOT NULL DEFAULT GetDate(),
-    [Notes]         NVARCHAR(2048)  NOT NULL DEFAULT '' 
+    [Notes]         NVARCHAR(2048)  NULL  
 )
