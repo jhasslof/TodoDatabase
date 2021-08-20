@@ -92,6 +92,7 @@
     <None Include="Scripts\Migrations\Templates\Template.AddDatabaseUser.sql" />
     <None Include="Scripts\Migrations\Migration.2.all.AddFeatureTodoItems.sql" />
     <None Include="Scripts\Migrations\Templates\Template.AddSupportedFeature.sql" />
+    <None Include="Scripts\Migrations\Migration.3.all.AddFeature-ta-10-notes-db.sql" />
   </ItemGroup>
   <ItemGroup>
     <SqlCmdVariable Include="DbUserName">
